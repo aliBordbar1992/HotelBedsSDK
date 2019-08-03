@@ -3,6 +3,7 @@ using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers;
 using HotelBeds.Api.Activities.Helpers.RequestFilter;
 using HotelBeds.Api.Tests.TestData;
+using HotelBeds.Shared;
 using Xunit;
 
 namespace HotelBeds.Api.Tests
@@ -16,7 +17,7 @@ namespace HotelBeds.Api.Tests
                 .With().Country(TestDestinations.Barcelona.CountryCode)
                 .And().Destination(TestDestinations.Barcelona.DestinationCode);
 
-            var request = new SearchRequestBuilder(filterBuilder, DateTime.Now, DateTime.Now.AddDays(5))
+            var request = new SearchRequestBuilder(filterBuilder, DateTime.Now.AddDays(1), DateTime.Now.AddDays(5))
                 .Paginated(1, 1)
                 .Build();
 
