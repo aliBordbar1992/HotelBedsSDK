@@ -92,9 +92,10 @@ namespace HotelBeds.Api.Tests.HelperTests
             filter.ElementAt(1).SearchFilterItems.Should().Contain(new ActivitySearchFilterItem(ActivityFilterType.Destination, "Tehran"));
         }
 
-        [Fact]
-        public void foo()
+        [Fact(Skip = "TODO test: Implementation not yet provided")]
+        public void creating_a_filter_request_with_a_custom_list_structure()
         {
+            //TODO new filter builder implementation
             IList<Filter> filters = new List<Filter>
             {
                 new Filter()
