@@ -44,4 +44,18 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-In your controller, just inject ```IActivityApi``` to use activities, and ```ITransferApi``` to transfers.
+In your controller, just inject ```IActivityApi``` to use activities, and ```ITransferApi``` to transfers:
+
+```csharp
+public class ActivityController : ControllerBase
+{
+    private readonly IActivityApi _activityApi;
+    private readonly ITransferApi _transferApi;
+    
+    public ActivityController(IActivityApi activityApi, ITransferApi transferApi)
+    {
+        _activityApi = activityApi;
+        _transferApi = transferApi;
+    }
+}
+```
