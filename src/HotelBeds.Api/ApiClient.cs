@@ -6,26 +6,24 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using HotelBeds.Api.Activities;
+using HotelBeds.Api.Transfer;
 using HotelBeds.Shared;
 
 namespace HotelBeds.Api
 {
     public class ApiClient : IHotelBedsApiClient
     {
-        private readonly IApiVersionSelector _version;
+        private IApiVersionSelector _version;
         private readonly string _apiKey;
         private readonly string _secret;
         private string _baseUrl;
 
 
-        public ApiClient(IApiVersionSelector versionSelector, string apiKey, string secret, IHotelBedsBaseUrl url)
+        public ApiClient(string apiKey, string secret)
         {
-            _version = versionSelector;
             _apiKey = apiKey;
             _secret = secret;
-            _baseUrl = url.GetUrl();
         }
-
 
         public TRes CallRemoteApi<TRes>(ApiPathsBase path, List<Tuple<string, string>> param)
         {
@@ -173,10 +171,16 @@ namespace HotelBeds.Api
             client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "application/json; charset=utf-8");
             client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "hotel-api-sdk-net");
         }
-        public void ChangeBaseUrl(string url)
+        public void SetBaseUrl(string url)
         {
             _baseUrl = url;
         }
+
+        public void SetVersion(IApiVersionSelector versionSelector)
+        {
+            _version = versionSelector;
+        }
+
         private string XSignature()
         {
             string signature;

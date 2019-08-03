@@ -1,6 +1,6 @@
 namespace HotelBeds.Api.Activities
 {
-    public class ActivityApiBaseUrl: IHotelBedsBaseUrl
+    public class ActivityApiBaseUrl: IActivityApiBaseUrl
     {
         public string BaseUrl { get; set; }
         public string GetUrl()
@@ -12,5 +12,10 @@ namespace HotelBeds.Api.Activities
         {
             BaseUrl = url;
         }
+    }
+
+    public interface IActivityApiBaseUrl : IHotelBedsBaseUrl
+    {
+
     }
 }

@@ -10,6 +10,7 @@ namespace HotelBeds.Api
         TRes CallRemoteApi<TRes>(ApiPathsBase path, List<Tuple<string, string>> param);
         Task<TRes> CallRemoteApiAsync<TReq, TRes>(TReq request, ApiPathsBase path, List<Tuple<string, string>> param);
         Task<TRes> CallRemoteApiAsync<TRes>(ApiPathsBase path, List<Tuple<string, string>> param);
-        void ChangeBaseUrl(string url);
+        void SetBaseUrl(string url);
+        void SetVersion(IApiVersionSelector versionSelector);
     }
 }

@@ -20,7 +20,7 @@ namespace HotelBeds.Api
         private string _customBasePath;
         private string _customVersion;
 
-        protected void SetCustomUrl(IHotelBedsBaseUrl baseUrl,IApiVersionSelector version)
+        protected void SetCustomUrl(IActivityApiBaseUrl baseUrl,IApiVersionSelector version)
         {
             _customBasePath = baseUrl.GetUrl();
             _customVersion = version.GetVersion();

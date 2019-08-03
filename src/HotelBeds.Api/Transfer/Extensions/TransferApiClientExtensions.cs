@@ -13,8 +13,9 @@ namespace HotelBeds.Api.Transfer.Extensions
         {
             string baseUrl = "https://api.hotelbeds.com/transfer-api";
             var url = new TransferApiBaseUrl {BaseUrl = baseUrl};
-            serviceCollection.AddTransient<IHotelBedsBaseUrl>(c => url);
-            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(new TransferApiVersion(),  apiKey, secret, url));
+            serviceCollection.AddTransient<ITransferApiBaseUrl>(c => url);
+            serviceCollection.AddTransient<ITransferVersionSelector>(c => new TransferApiVersion());
+            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(apiKey, secret));
             serviceCollection.AddTransient<ITransferApi, TransferApi>();
         }
 
@@ -42,7 +43,7 @@ namespace HotelBeds.Api.Transfer.Extensions
         public async Task InvokeAsync(HttpContext httpContext, IServiceProvider serviceProvider)
         {
             string baseUrl = "https://api.test.hotelbeds.com/transfer-api";
-            var url = (IHotelBedsBaseUrl)serviceProvider.GetService(typeof(IHotelBedsBaseUrl));
+            var url = (ITransferApiBaseUrl)serviceProvider.GetService(typeof(ITransferApiBaseUrl));
             url.SetUrl(baseUrl);
 
             await _next(httpContext);

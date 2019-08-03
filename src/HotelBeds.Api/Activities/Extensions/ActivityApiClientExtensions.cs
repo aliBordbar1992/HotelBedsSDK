@@ -12,8 +12,9 @@ namespace HotelBeds.Api.Activities.Extensions
         {
             string baseUrl = "https://api.hotelbeds.com/activity-api";
             var url = new ActivityApiBaseUrl {BaseUrl = baseUrl};
-            serviceCollection.AddTransient<IHotelBedsBaseUrl>(c => url);
-            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(new ActivityApiVersion(ActivityApiVersion.Versions.V3),  apiKey, secret, url));
+            serviceCollection.AddTransient<IActivityApiBaseUrl>(c => url);
+            serviceCollection.AddTransient<IActivityVersionSelector>(c => new ActivityApiVersion(ActivityApiVersion.Versions.V3));
+            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(apiKey, secret));
             serviceCollection.AddTransient<IActivityApi, ActivityApi>();
         }
 
@@ -41,7 +42,7 @@ namespace HotelBeds.Api.Activities.Extensions
         public async Task InvokeAsync(HttpContext httpContext, IServiceProvider serviceProvider)
         {
             string baseUrl = "https://api.test.hotelbeds.com/activity-api";
-            var url = (IHotelBedsBaseUrl)serviceProvider.GetService(typeof(IHotelBedsBaseUrl));
+            var url = (IActivityApiBaseUrl)serviceProvider.GetService(typeof(IActivityApiBaseUrl));
             url.SetUrl(baseUrl);
 
             await _next(httpContext);

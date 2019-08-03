@@ -1,4 +1,4 @@
-namespace HotelBeds.Api
+﻿namespace HotelBeds.Api
 {
     public interface IHotelBedsBaseUrl
     {

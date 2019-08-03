@@ -10,9 +10,11 @@ namespace HotelBeds.Api.Activities
     {
         private readonly IHotelBedsApiClient _api;
 
-        public ActivityApi(IHotelBedsApiClient api)
+        public ActivityApi(IHotelBedsApiClient api, IActivityApiBaseUrl baseUrl, IActivityVersionSelector versionSelector)
         {
             _api = api;
+            _api.SetBaseUrl(baseUrl.GetUrl());
+            _api.SetVersion(versionSelector);
         }
 
         public ActivitySearchResponse Search(ActivitySearchRequest request)

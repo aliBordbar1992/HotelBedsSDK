@@ -10,9 +10,11 @@ namespace HotelBeds.Api.Transfer
     {
         private readonly IHotelBedsApiClient _api;
 
-        public TransferApi(IHotelBedsApiClient api)
+        public TransferApi(IHotelBedsApiClient api, ITransferApiBaseUrl baseUrl, ITransferVersionSelector versionSelector)
         {
             _api = api;
+            _api.SetBaseUrl(baseUrl.GetUrl());
+            _api.SetVersion(versionSelector);
         }
 
         public AvailabilityResponse Availability(AvailabilityRequest request)

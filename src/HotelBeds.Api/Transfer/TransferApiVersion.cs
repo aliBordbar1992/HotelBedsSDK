@@ -1,6 +1,6 @@
 namespace HotelBeds.Api.Transfer
 {
-    public class TransferApiVersion : IApiVersionSelector
+    public class TransferApiVersion : ITransferVersionSelector
     {
         public TransferApiVersion()
         {

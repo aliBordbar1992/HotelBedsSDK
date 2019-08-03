@@ -1,6 +1,6 @@
 namespace HotelBeds.Api.Transfer
 {
-    public class TransferApiBaseUrl: IHotelBedsBaseUrl
+    public class TransferApiBaseUrl: ITransferApiBaseUrl
     {
         public string BaseUrl { get; set; }
         public string GetUrl()
@@ -12,5 +12,10 @@ namespace HotelBeds.Api.Transfer
         {
             BaseUrl = url;
         }
+    }
+
+    public interface ITransferApiBaseUrl : IHotelBedsBaseUrl
+    {
+
     }
 }

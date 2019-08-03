@@ -1,6 +1,6 @@
 namespace HotelBeds.Api.Activities
 {
-    public class ActivityApiVersion : IApiVersionSelector
+    public class ActivityApiVersion : IActivityVersionSelector
     {
         public enum Versions { V1, V3 };
 
