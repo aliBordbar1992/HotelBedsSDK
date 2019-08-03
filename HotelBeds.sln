@@ -7,19 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5397AE78-CD7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{96CC991F-9707-46D9-BDAC-2D8E9A25EFF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Shared.Tests", "HotelBeds.Activities.Api.Model.Tests\HotelBeds.Shared.Tests.csproj", "{7AA8FC49-DAA8-406E-8991-BE198D39E09A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Shared.Tests", "test\HotelBeds.Shared.Tests\HotelBeds.Shared.Tests.csproj", "{7AA8FC49-DAA8-406E-8991-BE198D39E09A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Shared", "HotelBeds.Shared\HotelBeds.Shared.csproj", "{BB7C9716-9F80-4983-B8DE-533EB55B4291}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Shared", "src\HotelBeds.Shared\HotelBeds.Shared.csproj", "{BB7C9716-9F80-4983-B8DE-533EB55B4291}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Api", "HotelBeds.Api\HotelBeds.Api.csproj", "{368F5196-80D0-4DEE-A6BB-C0AA2D81C09B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Api", "src\HotelBeds.Api\HotelBeds.Api.csproj", "{368F5196-80D0-4DEE-A6BB-C0AA2D81C09B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Api.Tests", "HotelBeds.Api.Tests\HotelBeds.Api.Tests.csproj", "{D5BD2306-9334-4109-8C8D-1F00438BCA7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Api.Tests", "test\HotelBeds.Api.Tests\HotelBeds.Api.Tests.csproj", "{D5BD2306-9334-4109-8C8D-1F00438BCA7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSignature", "xSignature\xSignature.csproj", "{4649261B-B2AA-439C-BB2E-D5DE9AB2C5A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSignature", "src\xSignature\xSignature.csproj", "{4649261B-B2AA-439C-BB2E-D5DE9AB2C5A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Client", "HotelBeds.Client\HotelBeds.Client.csproj", "{0851E5ED-14B1-442A-9314-81742C64DDB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelBeds.Client", "src\HotelBeds.Client\HotelBeds.Client.csproj", "{0851E5ED-14B1-442A-9314-81742C64DDB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBeds.Client.Data", "HotelBeds.Client.Data\HotelBeds.Client.Data.csproj", "{614BDA7E-21BE-40C6-AB70-01131A5AE2E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBeds.Client.Data", "src\HotelBeds.Client.Data\HotelBeds.Client.Data.csproj", "{614BDA7E-21BE-40C6-AB70-01131A5AE2E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

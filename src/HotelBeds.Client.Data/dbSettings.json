@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "HotelbedsContext": "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Hotelbeds_New;Data Source=."
+  }
+}
