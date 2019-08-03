@@ -1,0 +1,17 @@
+{
+  "searchFilterItems": [
+    {
+      "type": "gps",
+      "latitude": 41.49004,
+      "longitude": 2.08161
+    },
+    {
+      "type": "destination",
+      "value": "BCN"
+    },
+    {
+      "type": "service",
+      "value": "E-E10-EXPER"
+    }
+  ]
+}

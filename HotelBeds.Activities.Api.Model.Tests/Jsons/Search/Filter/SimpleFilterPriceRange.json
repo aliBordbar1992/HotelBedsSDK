@@ -1,0 +1,12 @@
+{
+  "searchFilterItems": [
+    {
+      "type": "priceFrom",
+      "value": "50"
+    },
+    {
+      "type": "priceTo",
+      "value": "60"
+    }
+  ]
+}

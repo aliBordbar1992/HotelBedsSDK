@@ -1,0 +1,12 @@
+{
+  "searchFilterItems": [
+    {
+      "type": "destination",
+      "value": "MCO"
+    },
+    {
+      "type": "segment",
+      "value": "3"
+    }
+  ]
+}

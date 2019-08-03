@@ -1,0 +1,16 @@
+{
+  "searchFilterItems": [
+    {
+      "type": "country",
+      "value": "ES"
+    },
+    {
+      "type": "destination",
+      "value": "BCN"
+    },
+    {
+      "type": "service",
+      "value": "E-E10-EXPER"
+    }
+  ]
+}
