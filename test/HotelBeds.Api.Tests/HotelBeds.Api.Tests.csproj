@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HotelBeds.Api\HotelBeds.Api.csproj" />
-    <ProjectReference Include="..\HotelBeds.Shared\HotelBeds.Shared.csproj" />
+    <ProjectReference Include="..\..\src\HotelBeds.Api\HotelBeds.Api.csproj" />
   </ItemGroup>
 
 </Project>
