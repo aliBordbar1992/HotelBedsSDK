@@ -364,6 +364,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/dotnetcore,visualstudio
-/xSignature
-/HotelBeds.Client.Data
-/HotelBeds.Client
+/src/xSignature
+/src/HotelBeds.Client.Data
+/src/HotelBeds.Client
