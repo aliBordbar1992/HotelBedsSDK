@@ -83,12 +83,6 @@ namespace HotelBeds.Api.Activities.Helpers.RequestFilter
             return Completer(item);
         }
 
-        //public ISearchRequestFilterTypeCompleter SegmentFilter(string value)
-        //{
-        //    var item = new ActivitySearchFilterItem(ActivityFilterType.Segment, value);
-        //    return Completer(item);
-        //}
-
         public ISearchRequestFilterTypeCompleter Country(string value)
         {
             var item = new ActivitySearchFilterItem(ActivityFilterType.Country, value);
@@ -125,9 +119,10 @@ namespace HotelBeds.Api.Activities.Helpers.RequestFilter
             return new SearchRequestFilterTypeCompleter(_holder);
         }
 
-        public SomeAwesomeClass<TFilter> ListOf<TFilter>(IList<TFilter> filters)
+        public RequestFilterItemSelector<TFilter> ListOf<TFilter>(IList<TFilter> filters)
         {
-            return new SomeAwesomeClass<TFilter>();
+            List<ActivitySearchFilterItemList> lst = new List<ActivitySearchFilterItemList>(filters.Count);
+            return new RequestFilterItemSelector<TFilter>(lst, filters);
         }
 
         private ISearchRequestFilterTypeCompleter Completer(ActivitySearchFilterItem item)

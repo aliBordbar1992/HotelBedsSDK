@@ -92,10 +92,9 @@ namespace HotelBeds.Api.Tests.HelperTests
             filter.ElementAt(1).SearchFilterItems.Should().Contain(new ActivitySearchFilterItem(ActivityFilterType.Destination, "Tehran"));
         }
 
-        [Fact(Skip = "TODO test: Implementation not yet provided")]
+        [Fact]
         public void creating_a_filter_request_with_a_custom_list_structure()
         {
-            //TODO new filter builder implementation
             IList<Filter> filters = new List<Filter>
             {
                 new Filter()
@@ -111,10 +110,60 @@ namespace HotelBeds.Api.Tests.HelperTests
             var filter = new SearchRequestFilterBuilder()
                 .With().ListOf(filters)
                 .WithItems(x => x.FilterItems)
-                .WithProperties(x => x.Type, x => x.Value, x => x.Latitude, x => x.Longitude)
+                .WithProperties(
+                    x => x.Type,
+                    x => x.Value,
+                    x => x.Latitude,
+                    x => x.Longitude)
                 .Build();
 
             filter.Count.Should().Be(1);
+            filter.First().SearchFilterItems.Count.Should().Be(2);
+        }
+
+        [Fact]
+        public void creating_a_filter_request_with_a_custom_list_structure_more_complex()
+        {
+            IList<Filter> filters = new List<Filter>
+            {
+                new Filter()
+                {
+                    FilterItems = new List<FilterItem>()
+                    {
+                        new FilterItem() { Type = "country", Value = "ES" },
+                        new FilterItem() { Type = "destination", Value = "BCN" }
+                    }
+                },
+                new Filter()
+                {
+                    FilterItems = new List<FilterItem>()
+                    {
+                        new FilterItem() { Type = "country", Value = "ES" },
+                        new FilterItem() { Type = "destination", Value = "BCN" }
+                    }
+                },
+                new Filter()
+                {
+                    FilterItems = new List<FilterItem>()
+                    {
+                        new FilterItem() { Type = "country", Value = "ES" },
+                        new FilterItem() { Type = "destination", Value = "BCN" }
+                    }
+                }
+
+            };
+
+            var filter = new SearchRequestFilterBuilder()
+                .With().ListOf(filters)
+                .WithItems(x => x.FilterItems)
+                .WithProperties(
+                    x => x.Type,
+                    x => x.Value,
+                    x => x.Latitude,
+                    x => x.Longitude)
+                .Build();
+
+            filter.Count.Should().Be(3);
             filter.First().SearchFilterItems.Count.Should().Be(2);
         }
 
