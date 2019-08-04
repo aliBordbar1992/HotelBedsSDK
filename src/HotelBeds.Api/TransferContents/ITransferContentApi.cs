@@ -2,6 +2,6 @@
 {
     public interface ITransferContentApi
     {
-        object Routes()
+        
     }
 }
