@@ -92,32 +92,6 @@ namespace HotelBeds.Api.Tests.HelperTests
             filter.ElementAt(1).SearchFilterItems.Should().Contain(new ActivitySearchFilterItem(ActivityFilterType.Destination, "Tehran"));
         }
 
-        [Fact(Skip = "TODO test: Implementation not yet provided")]
-        public void creating_a_filter_request_with_a_custom_list_structure()
-        {
-            //TODO new filter builder implementation
-            IList<Filter> filters = new List<Filter>
-            {
-                new Filter()
-                {
-                    FilterItems = new List<FilterItem>()
-                    {
-                        new FilterItem() { Type = "country", Value = "ES" },
-                        new FilterItem() { Type = "destination", Value = "BCN" }
-                    }
-                }
-            };
-
-            var filter = new SearchRequestFilterBuilder()
-                .With().ListOf(filters)
-                .WithItems(x => x.FilterItems)
-                .WithProperties(x => x.Type, x => x.Value, x => x.Latitude, x => x.Longitude)
-                .Build();
-
-            filter.Count.Should().Be(1);
-            filter.First().SearchFilterItems.Count.Should().Be(2);
-        }
-
         internal class Filter
         {
             public List<FilterItem> FilterItems { get; set; }
