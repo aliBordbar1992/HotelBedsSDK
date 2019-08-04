@@ -12,14 +12,14 @@ namespace HotelBeds.Api.Tests.TestData
         public static string ActivitySecret => "FDBDYq3b2Y";
 
         public static IActivityApi ActivityApiClient =>
-            new ActivityApi(new ApiClient(new ActivityApiVersion(ActivityApiVersion.Versions.V3),
-                TestApiInformation.ActivityApiKey, TestApiInformation.ActivitySecret,
-                new ActivityApiBaseUrl {BaseUrl = "https://api.test.hotelbeds.com/activity-api"}));
+            new ActivityApi(new ApiClient(TestApiInformation.ActivityApiKey, TestApiInformation.ActivitySecret),
+                new ActivityApiBaseUrl {BaseUrl = "https://api.test.hotelbeds.com/activity-api"},
+                new ActivityApiVersion(ActivityApiVersion.Versions.V3));
 
         public static ITransferApi TransferApiClient =>
-            new TransferApi(new ApiClient(new TransferApiVersion(), TestApiInformation.ActivityApiKey,
-                TestApiInformation.ActivitySecret,
-                new TransferApiBaseUrl() {BaseUrl = "https://api.test.hotelbeds.com/transfer-api"}));
+            new TransferApi(new ApiClient(TestApiInformation.ActivityApiKey, TestApiInformation.ActivitySecret),
+                new TransferApiBaseUrl() {BaseUrl = "https://api.test.hotelbeds.com/transfer-api"},
+                new TransferApiVersion());
 
         public static string Signature
         {
