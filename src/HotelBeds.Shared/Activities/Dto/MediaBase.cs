@@ -12,7 +12,7 @@ namespace HotelBeds.Shared.Activities.Dto
         public int VisualizationOrder { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<MediaMimeType, MediaMimeType>))]
+        [JsonConverter(typeof(EnumTypeConverter<MediaMimeType>))]
         public MediaMimeType MimeType { get; set; }
         public MediaTagType Tag { get; set; }
         public List<MediaUrl> Urls { get; set; }

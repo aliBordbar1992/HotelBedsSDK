@@ -20,7 +20,7 @@ namespace HotelBeds.Shared.Activities.Dto
         public List<PaxPrice> AmountsFrom { get; set; }
         public List<Rate> Rates { get; set; }
 
-        [JsonConverter(typeof(EnumTypeConverter<ModalityUnitType, ModalityUnitType>))]
+        [JsonConverter(typeof(EnumTypeConverter<ModalityUnitType>))]
         public ModalityUnitType AmountUnitType { get; set; }
         public FactsheetActivity SpecificContent { get; set; }
         public string Code { get; set; }

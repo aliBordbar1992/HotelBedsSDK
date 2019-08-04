@@ -8,7 +8,7 @@ namespace HotelBeds.Shared.Activities.Dto
 {
     public class PointOfInterest
     {
-        [JsonConverter(typeof(EnumTypeConverter<PointOfInterestType, PointOfInterestType>))]
+        [JsonConverter(typeof(EnumTypeConverter<PointOfInterestType>))]
         public PointOfInterestType Type { get; set; }
         public Coordinate Geolocation { get; set; }
         public string Address { get; set; }

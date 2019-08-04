@@ -9,13 +9,13 @@ namespace HotelBeds.Shared.Transfer.Dto
     {
         public long Id { get; set; }
 
-        [JsonConverter(typeof(EnumTypeConverter<TransferStatusType, TransferStatusType>))]
+        [JsonConverter(typeof(EnumTypeConverter<TransferStatusType>))]
         public TransferStatusType Status { get; set; }
 
-        [JsonConverter(typeof(EnumTypeConverter<DirectionType, DirectionType>))]
+        [JsonConverter(typeof(EnumTypeConverter<DirectionType>))]
         public DirectionType Direction { get; set; }
 
-        [JsonConverter(typeof(EnumTypeConverter<TransferPrivacyType, TransferPrivacyType>))]
+        [JsonConverter(typeof(EnumTypeConverter<TransferPrivacyType>))]
         public TransferPrivacyType TransferType { get; set; }
 
         public Category Vehicle { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
 using HotelBeds.Api.Tests.TestData;
+using HotelBeds.Shared;
 using HotelBeds.Shared.Transfer.Domain;
 using HotelBeds.Shared.Transfer.Dto;
 using HotelBeds.Shared.Transfer.Request;

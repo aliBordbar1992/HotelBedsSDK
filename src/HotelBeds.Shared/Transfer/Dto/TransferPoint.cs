@@ -8,7 +8,7 @@ namespace HotelBeds.Shared.Transfer.Dto
     {
         public string Code { get; set; }
         public string Description { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<TransferPointType, TransferPointType>))]
+        [JsonConverter(typeof(EnumTypeConverter<TransferPointType>))]
         public TransferPointType Type { get; set; }
     }
 }

@@ -4,13 +4,13 @@ using Newtonsoft.Json;
 
 namespace HotelBeds.Shared.Converters
 {
-    public class EnumTypeConverter<T, T1> : JsonConverter where T : EnumType<T1> where T1 : IDomainType
+    public class EnumTypeConverter<T> : JsonConverter where T : EnumType<T>, IDomainType
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value.GetType() == typeof(T))
             {
-                var t = (T1)value;
+                var t = (T)value;
                 string code = t.GetCode();
                 writer.WriteValue(code);
             }
@@ -25,7 +25,7 @@ namespace HotelBeds.Shared.Converters
             if (objectType == typeof(T))
             {
                 string value = (string)reader.Value;
-                return EnumType<T1>.FromCode(value);
+                return EnumType<T>.FromCode(value);
             }
 
             return null;

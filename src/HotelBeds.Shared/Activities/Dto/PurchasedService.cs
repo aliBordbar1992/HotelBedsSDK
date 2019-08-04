@@ -34,7 +34,7 @@ namespace HotelBeds.Shared.Activities.Dto
         public BookingStatus Status { get; set; }
         public SupplierInformation Supplier { get; set; }
         public List<Comment> Comments { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<ActivityType, ActivityType>))]
+        [JsonConverter(typeof(EnumTypeConverter<ActivityType>))]
         public ActivityType Type { get; set; }
         public string PriceType { get; set; }
         public string ExternalSupplierReference { get; set; }

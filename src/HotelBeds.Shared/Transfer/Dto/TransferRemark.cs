@@ -8,7 +8,7 @@ namespace HotelBeds.Shared.Transfer.Dto
     {
         public string Description { get; set; }
         public bool Mandatory { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<TransferRemarkType, TransferRemarkType>))]
+        [JsonConverter(typeof(EnumTypeConverter<TransferRemarkType>))]
         public TransferRemarkType Type { get; set; }
     }
 }

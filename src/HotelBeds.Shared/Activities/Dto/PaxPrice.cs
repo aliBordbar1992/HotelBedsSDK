@@ -6,7 +6,7 @@ namespace HotelBeds.Shared.Activities.Dto
 {
     public class PaxPrice
     {
-        [JsonConverter(typeof(EnumTypeConverter<PaxType , PaxType >))]
+        [JsonConverter(typeof(EnumTypeConverter<PaxType>))]
         public PaxType PaxType { get; set; }
         public int AgeFrom { get; set; }
         public int AgeTo { get; set; }
