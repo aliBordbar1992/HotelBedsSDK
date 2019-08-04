@@ -7,7 +7,7 @@ namespace HotelBeds.Shared.Activities.Dto
     public class PaxDistribution
     {
         public int Age { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<PaxType, PaxType>))]
+        [JsonConverter(typeof(EnumTypeConverter<PaxType>))]
         public PaxType Type { get; set; }
     }
 }

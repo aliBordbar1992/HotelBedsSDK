@@ -1,6 +1,6 @@
 ﻿using HotelBeds.Shared.Activities.Domain;
 
-namespace HotelBeds.Shared.Transfer.Domain
+namespace HotelBeds.Shared
 {
     public class TransferPointType : EnumType<TransferPointType>, IDomainType
     {

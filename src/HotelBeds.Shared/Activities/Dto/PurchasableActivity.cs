@@ -20,7 +20,7 @@ namespace HotelBeds.Shared.Activities.Dto
         public string Currency { get; set; }
         public string Code { get; set; }
         public string ContentId { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<ActivityType, ActivityType>))]
+        [JsonConverter(typeof(EnumTypeConverter<ActivityType>))]
         public ActivityType Type { get; set; }
 
     }

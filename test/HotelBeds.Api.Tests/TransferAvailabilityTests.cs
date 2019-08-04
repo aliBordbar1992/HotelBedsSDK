@@ -1,6 +1,7 @@
 ﻿using System;
 using FluentAssertions;
 using HotelBeds.Api.Tests.TestData;
+using HotelBeds.Shared;
 using HotelBeds.Shared.Transfer.Domain;
 using HotelBeds.Shared.Transfer.Request;
 using Xunit;

@@ -11,7 +11,7 @@ namespace HotelBeds.Shared.Transfer.Dto
         public string Reference { get; set; }
         public string BookingFileId { get; set; }
         public DateTimeOffset CreationDate { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<TransferStatusType, TransferStatusType>))]
+        [JsonConverter(typeof(EnumTypeConverter<TransferStatusType>))]
         public TransferStatusType Status { get; set; }
         public ModificationsPolicies ModificationsPolicies { get; set; }
         public Pax Holder { get; set; }

@@ -11,7 +11,7 @@ namespace HotelBeds.Shared.Transfer.Dto
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Age { get; set; }
-        [JsonConverter(typeof(EnumTypeConverter<PaxType, PaxType>))]
+        [JsonConverter(typeof(EnumTypeConverter<PaxType>))]
         public PaxType Type { get; set; }
     }
 }
