@@ -31,7 +31,6 @@ namespace HotelBeds.Api.Activities.Helpers.RequestFilter
         public List<ActivitySearchFilterItemList> Build()
         {
             _holder.FlushActive();
-            //_filters.Add(_filter);
             return _holder.GetFilterList();
         }
     }
