@@ -25,6 +25,7 @@ namespace HotelBeds.Api
             _secret = secret;
         }
 
+
         public TRes CallRemoteApi<TRes>(ApiPathsBase path, List<Tuple<string, string>> param)
         {
             return CallRemoteApiAsync<TRes>(path, param).Result;
