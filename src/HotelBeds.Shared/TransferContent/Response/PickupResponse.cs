@@ -3,8 +3,8 @@ using HotelBeds.Shared.TransferContent.Dto;
 
 namespace HotelBeds.Shared.TransferContent.Response
 {
-    public class RouteResponse : BaseResponse
+    public class PickupResponse : BaseResponse
     {
-        public List<Route> Routes { get; set; }
+        public List<Pickup> Pickup { get; set; }
     }
 }
