@@ -1,6 +1,6 @@
-namespace HotelBeds.Api.Transfer
+﻿namespace HotelBeds.Api.TransferContents
 {
-    public class TransferApiBaseUrl: ITransferApiBaseUrl
+    public class TransferContentApiBaseUrl : ITransferContentApiBaseUrl
     {
         public string BaseUrl { get; set; }
         public string GetUrl()

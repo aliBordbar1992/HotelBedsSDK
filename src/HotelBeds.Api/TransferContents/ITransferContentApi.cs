@@ -145,7 +145,7 @@ namespace HotelBeds.Api.TransferContents
         /// <param name="limit">Allows you to set the number of objects returned in one page.
         /// Default 0, retrieves all items</param>
         /// <returns>The response of Destinations provides information of the available destinations.</returns>
-        CountriesResponse Destinations(string fields = "ALL", string language = "en", string countryCode = "", string codes = "", int offset = 0, int limit = 0);
+        DestinationsResponse Destinations(string fields = "ALL", string language = "en", string countryCode = "", string codes = "", int offset = 0, int limit = 0);
 
 
         /// <summary>
