@@ -8,7 +8,7 @@ using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared.Activities.Dto;
 using Xunit;
 
-namespace HotelBeds.Api.Tests.HelperTests
+namespace HotelBeds.Api.Tests.ActivityTests.HelperTests
 {
     public class SearchRequestBuilderTests
     {

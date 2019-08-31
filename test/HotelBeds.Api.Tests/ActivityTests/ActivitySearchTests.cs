@@ -3,10 +3,9 @@ using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers;
 using HotelBeds.Api.Activities.Helpers.RequestFilter;
 using HotelBeds.Api.Tests.TestData;
-using HotelBeds.Shared;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.ActivityTests
 {
     public class ActivitySearchTests
     {

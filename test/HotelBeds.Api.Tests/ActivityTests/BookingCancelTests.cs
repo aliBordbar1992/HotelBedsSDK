@@ -1,14 +1,14 @@
-﻿using HotelBeds.Api.Tests.Fixtures;
-using HotelBeds.Api.Tests.TestData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
+using HotelBeds.Api.Tests.ActivityTests.Fixtures;
+using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared.Activities.Domain;
 using HotelBeds.Shared.Activities.Dto;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.ActivityTests
 {
     public class BookingCancelTests : IClassFixture<ActivityDetailsFixture>
     {

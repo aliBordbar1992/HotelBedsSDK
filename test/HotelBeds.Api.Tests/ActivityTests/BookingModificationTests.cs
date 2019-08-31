@@ -6,16 +6,14 @@ using HotelBeds.Api.Activities;
 using HotelBeds.Api.Activities.Helpers;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
 using HotelBeds.Api.Activities.Helpers.PaxDistribution;
-using HotelBeds.Api.Tests.Fixtures;
 using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared;
-using HotelBeds.Shared.Activities.Domain;
 using HotelBeds.Shared.Activities.Dto;
 using HotelBeds.Shared.Activities.Request;
 using HotelBeds.Shared.Activities.Response;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.ActivityTests
 {
     public class BookingModificationTests
     {

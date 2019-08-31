@@ -1,15 +1,16 @@
-﻿using System;
-using System.Linq;
+using System;
+using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers;
 using HotelBeds.Api.Activities.Helpers.PaxDistribution;
 using HotelBeds.Api.Tests.TestData;
+using Xunit;
 
-namespace HotelBeds.Api.Tests.Fixtures
+namespace HotelBeds.Api.Tests.ActivityTests
 {
-    public class ActivityDetailsFixture : IDisposable
+    public class ActivityDetailsTests
     {
-        public string RateKey { get; }
-        public ActivityDetailsFixture()
+        [Fact]
+        public void sending_an_activity_details_request_should_not_contain_errors()
         {
             var paxes = new PaxDistributionBuilder()
                 .APax().WithAge(20)
@@ -21,11 +22,7 @@ namespace HotelBeds.Api.Tests.Fixtures
             var activity = TestApiInformation.ActivityApiClient;
             var activityDetailsResponse = activity.Details(request);
 
-            RateKey = activityDetailsResponse.Activity.Modalities.First().Rates.First().RateDetails.First().RateKey;
-        }
-
-        public void Dispose()
-        {
+            activityDetailsResponse.Errors.Should().BeNullOrEmpty();
         }
     }
 }

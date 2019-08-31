@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using HotelBeds.Api.Activities.Helpers.BookingConfirm;
 using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared;
 using HotelBeds.Shared.Transfer.Domain;
@@ -10,7 +9,7 @@ using HotelBeds.Shared.Transfer.Dto;
 using HotelBeds.Shared.Transfer.Request;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.TransferTests
 {
     public class TransferBookingConfirmTests
     {

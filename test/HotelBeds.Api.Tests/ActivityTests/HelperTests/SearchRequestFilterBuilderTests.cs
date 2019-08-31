@@ -2,12 +2,11 @@
 using System.Linq;
 using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.RequestFilter;
-using HotelBeds.Shared;
 using HotelBeds.Shared.Activities.Domain;
 using HotelBeds.Shared.Activities.Dto;
 using Xunit;
 
-namespace HotelBeds.Api.Tests.HelperTests
+namespace HotelBeds.Api.Tests.ActivityTests.HelperTests
 {
     public class SearchRequestFilterBuilderTests
     {

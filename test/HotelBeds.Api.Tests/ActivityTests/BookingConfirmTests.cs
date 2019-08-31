@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
-using HotelBeds.Api.Tests.Fixtures;
+using HotelBeds.Api.Tests.ActivityTests.Fixtures;
 using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared.Activities.Domain;
 using HotelBeds.Shared.Activities.Dto;
 using HotelBeds.Shared.Activities.Request;
-using HotelBeds.Shared.Transfer.Domain;
-using HotelBeds.Shared.Transfer.Dto;
-using HotelBeds.Shared.Transfer.Request;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.ActivityTests
 {
     public class BookingConfirmTests
     {

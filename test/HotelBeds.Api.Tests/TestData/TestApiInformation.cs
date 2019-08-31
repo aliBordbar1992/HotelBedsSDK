@@ -3,12 +3,14 @@ using System.Security.Cryptography;
 using System.Text;
 using HotelBeds.Api.Activities;
 using HotelBeds.Api.Transfer;
+using HotelBeds.Api.TransferContents;
 
 namespace HotelBeds.Api.Tests.TestData
 {
     public class TestApiInformation
     {
         public static string ActivityApiKey => "9z8f4jry8dhuk5j65c58sgha";
+        public static string TransferContentApiKey => "txuby72uwdqqsd5ts2vnt4c7";
         public static string ActivitySecret => "FDBDYq3b2Y";
 
         public static IActivityApi ActivityApiClient =>
@@ -20,6 +22,11 @@ namespace HotelBeds.Api.Tests.TestData
             new TransferApi(new ApiClient(TestApiInformation.ActivityApiKey, TestApiInformation.ActivitySecret),
                 new TransferApiBaseUrl() {BaseUrl = "https://api.test.hotelbeds.com/transfer-api"},
                 new TransferApiVersion());
+
+        public static ITransferContentApi TransferContentApiClient =>
+            new TransferContentApi(new ApiClient(TestApiInformation.TransferContentApiKey, string.Empty)
+                , new TransferContentApiBaseUrl() {BaseUrl = "https://api.test.hotelbeds.com/transfer-cache-api"},
+                new TransferContentVersionSelector());
 
         public static string Signature
         {

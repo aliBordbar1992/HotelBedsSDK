@@ -3,7 +3,7 @@ using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.PaxDistribution;
 using Xunit;
 
-namespace HotelBeds.Api.Tests.HelperTests
+namespace HotelBeds.Api.Tests.ActivityTests.HelperTests
 {
     public class PaxDistributionBuilderTests
     {

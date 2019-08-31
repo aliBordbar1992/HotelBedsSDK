@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using FluentAssertions;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
 using HotelBeds.Shared.Activities.Dto;
 using Xunit;
 
-namespace HotelBeds.Api.Tests.HelperTests
+namespace HotelBeds.Api.Tests.ActivityTests.HelperTests
 {
     public class BookingConfirmRequestBuilderTests
     {

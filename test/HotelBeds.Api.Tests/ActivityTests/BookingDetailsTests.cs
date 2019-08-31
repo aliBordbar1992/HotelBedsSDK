@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using FluentAssertions;
 using HotelBeds.Api.Activities;
 using HotelBeds.Api.Activities.Helpers.BookingConfirm;
-using HotelBeds.Api.Tests.Fixtures;
+using HotelBeds.Api.Tests.ActivityTests.Fixtures;
 using HotelBeds.Api.Tests.TestData;
 using HotelBeds.Shared.Activities.Dto;
 using Xunit;
 
-namespace HotelBeds.Api.Tests
+namespace HotelBeds.Api.Tests.ActivityTests
 {
     public class BookingDetailsTests
     {
