@@ -1,13 +1,15 @@
+using HotelBeds.Api.Activities;
+using HotelBeds.Shared;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using HotelBeds.Api.Activities;
-using HotelBeds.Api.Transfer;
-using HotelBeds.Shared;
+using HotelBeds.Shared.Activities.Dto;
 
 namespace HotelBeds.Api
 {
@@ -45,7 +47,6 @@ namespace HotelBeds.Api
                 using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip }))
                 {
                     string signature = XSignature();
-
                     SetupClient(client, path, signature);
 
                     response = await ProcessRequestAsync<TRes>(client, path, param);
@@ -67,7 +68,6 @@ namespace HotelBeds.Api
                 using (var client = new HttpClient(new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip }))
                 {
                     string signature = XSignature();
-
                     SetupClient(client, path, signature);
 
                     response = await ProcessRequestAsync<TReq, TRes>(client, request, path, param);
@@ -91,18 +91,51 @@ namespace HotelBeds.Api
             string uri = path.GetEndPoint();
             if (param != null) uri = path.GetEndPoint(param);
 
-            if (path.GetHttpMethod() == HttpMethod.Get) return await ProcessGetRequestAsync<TRes>(client, uri);
-            if (path.GetHttpMethod() == HttpMethod.Delete) return await ProcessDeleteRequestAsync<TRes>(client, uri);
+            HttpResponseMessage resp = null;
 
-            throw new HttpRequestException($"{path.GetHttpMethod()} is not a valid request.");
+            if (path.GetHttpMethod() == HttpMethod.Get) resp = await ProcessGetRequestAsync(client, uri);
+            if (path.GetHttpMethod() == HttpMethod.Delete) resp = await ProcessDeleteRequestAsync(client, uri);
+
+            if (resp == null) throw new HttpRequestException($"{path.GetHttpMethod()} is not a valid request.");
+
+            try
+            {
+                var response = await resp.Content.ReadAsAsync<TRes>();
+                return response;
+            }
+            catch (Exception e)
+            {
+                var response = await resp.Content.ReadAsStringAsync();
+
+                string errorCode = "Unknown Error";
+
+                Regex pattern = new Regex("<h1>(.*?)</h1>");
+                if (pattern.IsMatch(response))
+                {
+                    var match = pattern.Match(response);
+                    errorCode = match.Value;
+                }
+
+                var err = new Error()
+                {
+                    Code = errorCode,
+                    Text = errorCode,
+                    InternalDescription =
+                        $"{e.Message} ____ {String.Join(" ____ ", e.GetInnerExceptions().Select(x => x.Message))}"
+                };
+
+                throw new ApiSdkException(err);
+            }
         }
         private async Task<TRes> ProcessRequestAsync<TReq, TRes>(HttpClient client, TReq request, ApiPathsBase path, List<Tuple<string, string>> param)
         {
             string uri = path.GetEndPoint();
             if (param != null) uri = path.GetEndPoint(param);
 
-            if (path.GetHttpMethod() == HttpMethod.Get) return await ProcessGetRequestAsync<TRes>(client, uri);
-            if (path.GetHttpMethod() == HttpMethod.Delete) return await ProcessDeleteRequestAsync<TRes>(client, uri);
+            HttpResponseMessage resp = null;
+
+            if (path.GetHttpMethod() == HttpMethod.Get) resp = await ProcessGetRequestAsync(client, uri);
+            if (path.GetHttpMethod() == HttpMethod.Delete) resp = await ProcessDeleteRequestAsync(client, uri);
 
             if (request == null) throw new Exception($"Object request can't be null in a {path.GetHttpMethod()} request");
 
@@ -111,7 +144,7 @@ namespace HotelBeds.Api
                 string objectSerialized = request.ToJsonString();
                 var contentToSend = new StringContent(objectSerialized, Encoding.UTF8, "application/json");
 
-                return await ProcessPostRequestAsync<TRes>(contentToSend, path, param, client);
+                resp = await ProcessPostRequestAsync(contentToSend, path, param, client);
             }
 
             if (path.GetHttpMethod() == HttpMethod.Put)
@@ -119,50 +152,77 @@ namespace HotelBeds.Api
                 string objectSerialized = request.ToJsonString();
                 var contentToSend = new StringContent(objectSerialized, Encoding.UTF8, "application/json");
 
-                return await ProcessPutRequestAsync<TRes>(contentToSend, path, param, client);
+                resp = await ProcessPutRequestAsync(contentToSend, path, param, client);
             }
 
-            throw new HttpRequestException($"{path.GetHttpMethod()} is not a valid request.");
+            if (resp == null) throw new HttpRequestException($"{path.GetHttpMethod()} is not a valid request.");
+
+            try
+            {
+                var response = await resp.Content.ReadAsAsync<TRes>();
+                return response;
+            }
+            catch (Exception e)
+            {
+                var response = await resp.Content.ReadAsStringAsync();
+
+                string errorCode = "Unknown Error";
+
+                Regex pattern = new Regex("<h1>(.*?)</h1>");
+                if (pattern.IsMatch(response))
+                {
+                    var match = pattern.Match(response);
+                    errorCode = match.Value;
+                }
+
+                var err = new Error()
+                {
+                    Code = errorCode,
+                    Text = errorCode,
+                    InternalDescription =
+                        $"{e.Message} ____ {String.Join(" ____ ", e.GetInnerExceptions().Select(x => x.Message))}"
+                };
+
+                throw new ApiSdkException(err);
+            }
         }
 
-        private async Task<TRes> ProcessPostRequestAsync<TRes>(StringContent contentToSend, ApiPathsBase path, List<Tuple<string, string>> param, HttpClient client)
+        private async Task<HttpResponseMessage> ProcessPostRequestAsync(StringContent contentToSend, ApiPathsBase path, List<Tuple<string, string>> param, HttpClient client)
         {
-            var resp = param == null
+            return param == null
                 ? await client.PostAsync(path.GetEndPoint(), contentToSend)
                 : await client.PostAsync(path.GetEndPoint(param), contentToSend);
 
-            var response = await resp.Content.ReadAsAsync<TRes>();
-            return response;
+            //var response = await resp.Content.ReadAsAsync<TRes>();
+            //return response;
         }
-        private async Task<TRes> ProcessPutRequestAsync<TRes>(StringContent contentToSend, ApiPathsBase path, List<Tuple<string, string>> param, HttpClient client)
+        private async Task<HttpResponseMessage> ProcessPutRequestAsync(StringContent contentToSend, ApiPathsBase path, List<Tuple<string, string>> param, HttpClient client)
         {
-            var resp = param == null
+            return param == null
                 ? await client.PutAsync(path.GetEndPoint(), contentToSend)
                 : await client.PutAsync(path.GetEndPoint(param), contentToSend);
 
-            var response = resp.Content.ReadAsAsync<TRes>().Result;
-            return response;
+            //var response = resp.Content.ReadAsAsync<TRes>().Result;
+            //return response;
         }
-        private async Task<TRes> ProcessDeleteRequestAsync<TRes>(HttpClient client, string uri)
+        private async Task<HttpResponseMessage> ProcessDeleteRequestAsync(HttpClient client, string uri)
         {
-            HttpResponseMessage resp = await client.DeleteAsync(uri);
-            var response = await resp.Content.ReadAsAsync<TRes>();
-            return response;
+            return await client.DeleteAsync(uri);
+            //var response = await resp.Content.ReadAsAsync<TRes>();
+            //return response;
         }
-        private async Task<TRes> ProcessGetRequestAsync<TRes>(HttpClient client, string uri)
+        private async Task<HttpResponseMessage> ProcessGetRequestAsync(HttpClient client, string uri)
         {
-            HttpResponseMessage resp = await client.GetAsync(uri);
-            var response = await resp.Content.ReadAsAsync<TRes>();
-            return response;
+            return await client.GetAsync(uri);
         }
-        
+
         #endregion
 
 
         private void SetupClient(HttpClient client, ApiPathsBase path, string signature)
         {
-            client.BaseAddress = path.HasCustomBaseUrl 
-                ? new Uri(path.GetUrl()) 
+            client.BaseAddress = path.HasCustomBaseUrl
+                ? new Uri(path.GetUrl())
                 : new Uri(path.GetUrl(_baseUrl, _version));
 
             client.DefaultRequestHeaders.Clear();

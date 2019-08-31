@@ -8,13 +8,13 @@ namespace HotelBeds.Api.TransferContents.Extensions
 {
     public static class TransferContentApiClientExtensions
     {
-        public static void AddTransferContentApiClient(this IServiceCollection serviceCollection, string apiKey,  string secret)
+        public static void AddTransferContentApiClient(this IServiceCollection serviceCollection, string apiKey)
         {
-            string baseUrl = "https://api.test.hotelbeds.com/transfer-cache-api";
+            string baseUrl = "https://api.hotelbeds.com/transfer-cache-api";
             var url = new TransferContentApiBaseUrl {BaseUrl = baseUrl};
             serviceCollection.AddTransient<ITransferContentApiBaseUrl>(c => url);
             serviceCollection.AddTransient<ITransferContentVersionSelector>(c => new TransferContentVersionSelector());
-            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(apiKey, secret));
+            serviceCollection.AddTransient<IHotelBedsApiClient, ApiClient>(x => new ApiClient(apiKey, string.Empty));
             serviceCollection.AddTransient<ITransferContentApi, TransferContentApi>();
         }
 

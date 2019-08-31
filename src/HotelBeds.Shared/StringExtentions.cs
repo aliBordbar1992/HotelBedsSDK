@@ -20,13 +20,6 @@ namespace HotelBeds.Shared
 
     }
 
-    internal class ApiDateFormat : IsoDateTimeConverter
-    {
-        public ApiDateFormat()
-        {
-            DateTimeFormat = "yyyy-MM-dd";
-        }
-    }
 
     
 }
